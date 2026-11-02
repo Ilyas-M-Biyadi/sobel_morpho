@@ -1,0 +1,21 @@
+name: CI sobel
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+    - name: get code from repo
+      uses: actions/checkout@v4
+    
+    - name: Configurer le projet avec Cmake
+      run: cmake -B build
+    
+    - name: Compiler le projet
+      run: cmake --build build
+    
+    - name: executer le programme
+      run: ./build/Release/sobel
+    
